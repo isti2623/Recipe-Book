@@ -26,15 +26,12 @@ const Register = () => {
             alert('your password didnot match');
             return;
         }
-        registerUser(loginData.email, loginData.password, navigate, location);
+        registerUser(loginData.email, loginData.password, loginData.name, navigate, location);
 
         e.preventDefault();
     }
 
 
-    const handleGoogleSignIn = () => {
-
-    }
 
 
     return (
@@ -113,9 +110,7 @@ const Register = () => {
                                 {authError}
                             </Alert>
                         }
-                        <p className='ms-5'>-------------------------------------------</p>
 
-                        <Button className='ms-5 mb-3' onClick={handleGoogleSignIn} variant="danger">Google Sign In</Button>
 
 
 

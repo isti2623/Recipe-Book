@@ -27,9 +27,6 @@ const Login = () => {
     }
 
 
-    const handleGoogleSignIn = () => {
-
-    }
 
 
     return (
@@ -87,9 +84,7 @@ const Login = () => {
                                 {authError}
                             </Alert>
                         }
-                        <p className='ms-5'>-------------------------------------------</p>
 
-                        <Button className='ms-5 mb-3' onClick={handleGoogleSignIn} variant="danger">Google Sign In</Button>
 
 
                     </div>
