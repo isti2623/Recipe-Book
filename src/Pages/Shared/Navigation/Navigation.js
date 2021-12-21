@@ -13,15 +13,19 @@ const Navigation = () => {
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="ms-auto">
-                            <Link to="/home" className='text-light fw-bold text-decoration-none me-4'>HOME</Link>
+                            <Link to="/home" className='text-light fw-bold text-decoration-none mt-2 me-4'>HOME</Link>
+                            <Link to="/food" className='text-light fw-bold text-decoration-none mt-2 me-4'>FOOD</Link>
+                            <Link to="/aboutUs" className='text-light fw-bold text-decoration-none mt-2 me-4'>ABOUT US</Link>
+                            <Link to="/addRecipe" className='text-light fw-bold text-decoration-none mt-2 me-4'>ADD RECIPE</Link>
                             {
                                 user?.email ?
-                                    <Button className='ms-5 mb-3' onClick={logOut} variant="danger">Logout</Button>
+                                    <Button className='me-2' onClick={logOut} variant="danger">Logout</Button>
                                     :
-                                    <Link to="/login" className='text-light fw-bold text-decoration-none'>LOGIN</Link>
+                                    <Link to="/login" className='text-light fw-bold text-decoration-none mt-2 me-4'>LOGIN</Link>
 
 
                             }
+
 
                         </Nav>
                         {/*  <Nav>

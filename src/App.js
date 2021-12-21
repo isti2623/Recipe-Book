@@ -8,6 +8,9 @@ import Home from './Pages/Home/Home/Home';
 import Login from './Pages/Login/Login';
 import Register from './Pages/Login/Register/Register';
 import AuthProvider from './contexts/AuthProvider/AuthProvider';
+import About from './Pages/About/About/About';
+import Food from './Pages/Food/Food/Food';
+import AddRecipe from './Pages/AddRecipe/AddRecipe/AddRecipe';
 
 
 function App() {
@@ -20,6 +23,9 @@ function App() {
             <Route path="/home" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/aboutUs" element={<About />} />
+            <Route path="/food" element={<Food />} />
+            <Route path="/addRecipe" element={<AddRecipe />} />
           </Routes>
         </BrowserRouter>
       </AuthProvider>
