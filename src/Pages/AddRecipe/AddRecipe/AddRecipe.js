@@ -6,10 +6,10 @@ import Navigation from '../../Shared/Navigation/Navigation';
 const AddRecipe = () => {
 
     const { user } = useAuth();
-    const [bloodSuccess, setBloodSuccess] = useState(false);
+    const [recipeSuccess, setRecipeSuccess] = useState(false);
 
     const initialInfo = { recipeName: '', cuisine: '', category: '', author: user.displayName, ingredients: '', method: '' }
-    const [bloodReq, setBloodReq] = useState(initialInfo);
+    const [recipeReq, setRecipeReq] = useState(initialInfo);
 
 
 
@@ -19,28 +19,28 @@ const AddRecipe = () => {
     const handleOnBlur = e => {
         const field = e.target.name;
         const value = e.target.value;
-        const newLoginData = { ...bloodReq };
+        const newLoginData = { ...recipeReq };
         newLoginData[field] = value;
         console.log(newLoginData)
-        setBloodReq(newLoginData);
+        setRecipeReq(newLoginData);
     }
 
-    const handleBloodReqSubmit = e => {
+    const handleRecipeReqSubmit = e => {
         e.preventDefault();
-        const bloodPost = { ...bloodReq }
-        setBloodReq(bloodPost);
+        const recipePost = { ...recipeReq }
+        setRecipeReq(recipePost);
         //send to server
-        fetch("", {
+        fetch("http://localhost:5000/recipePostReq", {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(bloodPost)
+            body: JSON.stringify(recipePost)
         })
             .then(res => res.json())
             .then(data => {
                 if (data.insertedId) {
-                    setBloodSuccess(true);
+                    setRecipeSuccess(true);
                 }
             })
 
@@ -54,7 +54,7 @@ const AddRecipe = () => {
 
 
 
-                <Form onSubmit={handleBloodReqSubmit} className='w-50 my-5 ms-5'>
+                <Form onSubmit={handleRecipeReqSubmit} className='w-50 my-5 ms-5'>
                     <Form.Group className="mb-3">
                         <Form.Label className="text-danger fw-bold">Recipe Name</Form.Label>
                         <Form.Control
@@ -131,6 +131,7 @@ const AddRecipe = () => {
                     <Form.Group controlId="formFileSm" className="mb-3">
                         <Form.Label className="text-danger fw-bold">Recipe Image</Form.Label>
                         <Form.Control
+                            accept='image/*'
                             type="file"
                             size="sm" />
                     </Form.Group>
@@ -139,7 +140,7 @@ const AddRecipe = () => {
                         Share Post
                     </Button>
                     {
-                        bloodSuccess && <Alert className='mt-3' variant='success'>
+                        recipeSuccess && <Alert className='mt-3' variant='success'>
                             Congratulations , Recipe Posted
                         </Alert>
                     }
