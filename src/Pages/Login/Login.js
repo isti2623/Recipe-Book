@@ -2,14 +2,16 @@
 import Navigation from '../Shared/Navigation/Navigation';
 import React, { useState } from 'react';
 import login from '../../images/login.jpg'
-import { NavLink } from 'react-router-dom';
-import { Form, Button } from 'react-bootstrap';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
+import { Form, Button, Spinner, Alert } from 'react-bootstrap';
+import useAuth from '../../hooks/useAuth';
 
 const Login = () => {
     const [loginData, setLoginData] = useState({});
+    const { user, loginUser, isLoading, authError } = useAuth();
 
-
-
+    let navigate = useNavigate();
+    let location = useLocation();
 
     const handleOnBlur = e => {
         const field = e.target.name;
@@ -20,7 +22,7 @@ const Login = () => {
     }
 
     const handleLoginSubmit = e => {
-
+        loginUser(loginData.email, loginData.password, navigate, location);
         e.preventDefault();
     }
 
@@ -72,7 +74,19 @@ const Login = () => {
                             </Button>
                             <NavLink className='text-decoration-none' to='/register'><p className='text-danger mt-3'>New User ? Please Register</p></NavLink>
                         </Form>
-
+                        {
+                            isLoading && <Spinner animation="grow" />
+                        }
+                        {
+                            user?.email && <Alert>
+                                successfully login the user
+                            </Alert>
+                        }
+                        {
+                            authError && <Alert>
+                                {authError}
+                            </Alert>
+                        }
                         <p className='ms-5'>-------------------------------------------</p>
 
                         <Button className='ms-5 mb-3' onClick={handleGoogleSignIn} variant="danger">Google Sign In</Button>

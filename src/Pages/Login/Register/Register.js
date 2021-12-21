@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Spinner, Alert } from 'react-bootstrap';
 import login from '../../../images/login.jpg'
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 
 import Navigation from '../../Shared/Navigation/Navigation';
+import useAuth from '../../../hooks/useAuth';
 
 
 const Register = () => {
     const [loginData, setLoginData] = useState({});
-
-
+    const { user, registerUser, isLoading, authError } = useAuth();
+    let navigate = useNavigate();
+    let location = useLocation();
 
     const handleOnBlur = e => {
         const field = e.target.name;
@@ -24,6 +26,7 @@ const Register = () => {
             alert('your password didnot match');
             return;
         }
+        registerUser(loginData.email, loginData.password, navigate, location);
 
         e.preventDefault();
     }
@@ -43,7 +46,7 @@ const Register = () => {
                     <div className="col-lg-6">
                         <h2 className='mt-5 text-danger fw-bold fs-1 ms-5'>Register</h2>
                         <hr className='w-50 ms-5 mb-5' />
-                        <Form onSubmit={handleLoginSubmit} className='w-50 my-5 ms-5'>
+                        {!isLoading && <Form onSubmit={handleLoginSubmit} className='w-50 my-5 ms-5'>
                             <Form.Group className="mb-3">
                                 <Form.Label>User Name</Form.Label>
                                 <Form.Control
@@ -96,8 +99,20 @@ const Register = () => {
                                 Register
                             </Button>
                             <NavLink className='text-decoration-none' to='/login'><p className='text-danger mt-3'>Already Register?Please Login</p></NavLink>
-                        </Form>
-
+                        </Form>}
+                        {
+                            isLoading && <Spinner animation="grow" />
+                        }
+                        {
+                            user?.email && <Alert>
+                                successfully created the user
+                            </Alert>
+                        }
+                        {
+                            authError && <Alert>
+                                {authError}
+                            </Alert>
+                        }
                         <p className='ms-5'>-------------------------------------------</p>
 
                         <Button className='ms-5 mb-3' onClick={handleGoogleSignIn} variant="danger">Google Sign In</Button>
