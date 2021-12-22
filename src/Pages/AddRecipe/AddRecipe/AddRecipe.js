@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { Alert, Button, Form } from 'react-bootstrap';
-import useAuth from '../../../hooks/useAuth';
+
 import Navigation from '../../Shared/Navigation/Navigation';
 
 const AddRecipe = () => {
 
-    const { user } = useAuth();
+
     const [recipeSuccess, setRecipeSuccess] = useState(false);
 
     const [recipeName, setRecipeName] = useState('');
@@ -137,7 +137,6 @@ const AddRecipe = () => {
                             required
                             type="text"
                             onChange={e => setAuthor(e.target.value)}
-                            defaultValue={user.displayName}
                         />
                     </Form.Group>
 
@@ -173,12 +172,13 @@ const AddRecipe = () => {
                     <Button className='mt-3' variant="danger" type="submit">
                         Share Post
                     </Button>
+                    {
+                        recipeSuccess && <Alert className='mt-3' variant='success'>
+                            Congratulations , Recipe Posted
+                        </Alert>
+                    }
                 </Form>
-                {
-                    recipeSuccess && <Alert className='mt-3' variant='success'>
-                        Congratulations , Recipe Posted
-                    </Alert>
-                }
+
             </div>
         </div>
 
