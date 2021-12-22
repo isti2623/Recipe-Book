@@ -8,7 +8,15 @@ const AddRecipe = () => {
     const { user } = useAuth();
     const [recipeSuccess, setRecipeSuccess] = useState(false);
 
-    const initialInfo = { recipeName: '', cuisine: '', category: '', author: user.displayName, ingredients: '', method: '' }
+    const [recipeName, setRecipeName] = useState('');
+    const [cuisine, setCuisine] = useState('');
+    const [category, setCategory] = useState('');
+    const [author, setAuthor] = useState('');
+    const [ingredients, setIngredients] = useState('');
+    const [method, setMethod] = useState('');
+    const [image, setImage] = useState(null);
+
+    /* const initialInfo = { recipeName: '', cuisine: '', category: '', author: user.displayName, ingredients: '', method: '' }
     const [recipeReq, setRecipeReq] = useState(initialInfo);
 
 
@@ -23,26 +31,56 @@ const AddRecipe = () => {
         newLoginData[field] = value;
         console.log(newLoginData)
         setRecipeReq(newLoginData);
-    }
+    } */
 
-    const handleRecipeReqSubmit = e => {
+    const handleSubmit = e => {
         e.preventDefault();
-        const recipePost = { ...recipeReq }
-        setRecipeReq(recipePost);
-        //send to server
-        fetch("http://localhost:5000/recipePostReq", {
+        if (!image) {
+            return;
+        }
+        const formData = new FormData();
+        // const recipePost = { ...recipeReq }
+
+        formData.append('recipeName', recipeName);
+        formData.append('cuisine', cuisine);
+        formData.append('category', category);
+        formData.append('author', author);
+        formData.append('ingredients', ingredients);
+        formData.append('method', method);
+        formData.append('image', image);
+        //formData.append('recipePost', recipePost);
+        fetch('http://localhost:5000/recipePostReq', {
             method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(recipePost)
+            body: formData
         })
-            .then(res => res.json())
+            .then(response => response.json())
             .then(data => {
                 if (data.insertedId) {
                     setRecipeSuccess(true);
                 }
             })
+            .catch(error => {
+
+            });
+
+
+
+        /*        const recipePost = { ...recipeReq }
+               setRecipeReq(recipePost);
+               //send to server
+               fetch("http://localhost:5000/recipePostReq", {
+                   method: 'POST',
+                   headers: {
+                       'content-type': 'application/json'
+                   },
+                   body: JSON.stringify(recipePost)
+               })
+                   .then(res => res.json())
+                   .then(data => {
+                       if (data.insertedId) {
+                           setRecipeSuccess(true);
+                       }
+                   })*/
 
 
     }
@@ -54,13 +92,12 @@ const AddRecipe = () => {
 
 
 
-                <Form onSubmit={handleRecipeReqSubmit} className='w-50 my-5 ms-5'>
+                <Form onSubmit={handleSubmit} className='w-50 my-5 ms-5'>
                     <Form.Group className="mb-3">
                         <Form.Label className="text-danger fw-bold">Recipe Name</Form.Label>
                         <Form.Control
                             type="text"
-                            name="recipeName"
-                            onBlur={handleOnBlur}
+                            onChange={e => setRecipeName(e.target.value)}
                             placeholder='recipe name'
                         />
                     </Form.Group>
@@ -73,8 +110,7 @@ const AddRecipe = () => {
                         <Form.Control
                             required
                             type="text"
-                            name='cuisine'
-                            onBlur={handleOnBlur}
+                            onChange={e => setCuisine(e.target.value)}
                             placeholder='Cuisine' />
                     </Form.Group>
 
@@ -82,8 +118,7 @@ const AddRecipe = () => {
 
                     <Form.Label className="text-danger fw-bold">Category</Form.Label>
                     <Form.Select
-                        onBlur={handleOnBlur}
-                        name='category'
+                        onChange={e => setCategory(e.target.value)}
                         required
                         aria-label="Default select example">
                         <option>Select</option>
@@ -101,8 +136,7 @@ const AddRecipe = () => {
                         <Form.Control
                             required
                             type="text"
-                            name="author"
-                            onBlur={handleOnBlur}
+                            onChange={e => setAuthor(e.target.value)}
                             defaultValue={user.displayName}
                         />
                     </Form.Group>
@@ -111,9 +145,8 @@ const AddRecipe = () => {
                         <Form.Label>Ingredients</Form.Label>
                         <Form.Control
                             placeholder='Ingredients:'
-                            onBlur={handleOnBlur}
+                            onChange={e => setIngredients(e.target.value)}
                             required
-                            name='ingredients'
                             as="textarea"
                             rows={3} />
                     </Form.Group>
@@ -122,9 +155,8 @@ const AddRecipe = () => {
                         <Form.Label>Method</Form.Label>
                         <Form.Control placeholder='Method'
                             as="textarea"
-                            onBlur={handleOnBlur}
+                            onChange={e => setMethod(e.target.value)}
                             required
-                            name='method'
                             rows={2} />
                     </Form.Group>
 
@@ -133,22 +165,25 @@ const AddRecipe = () => {
                         <Form.Control
                             accept='image/*'
                             type="file"
-                            size="sm" />
+                            size="sm"
+                            onChange={e => setImage(e.target.files[0])}
+                        />
                     </Form.Group>
 
                     <Button className='mt-3' variant="danger" type="submit">
                         Share Post
                     </Button>
-                    {
-                        recipeSuccess && <Alert className='mt-3' variant='success'>
-                            Congratulations , Recipe Posted
-                        </Alert>
-                    }
                 </Form>
+                {
+                    recipeSuccess && <Alert className='mt-3' variant='success'>
+                        Congratulations , Recipe Posted
+                    </Alert>
+                }
             </div>
         </div>
 
     );
+
 };
 
 export default AddRecipe;
