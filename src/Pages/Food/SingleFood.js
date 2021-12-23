@@ -1,7 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const SingleFood = (props) => {
-    const { recipeName, cuisine, category, author, ingredients, method, image } = props.food;
+    const { recipeName, cuisine, category, author, ingredients, method, image, _id } = props.food;
     return (
         <div>
             <div className="col">
@@ -13,7 +14,7 @@ const SingleFood = (props) => {
                         <p className="card-text">Category: {category}</p>
                     </div>
                     <div className="card-footer">
-                        <div className="btn btn-danger fw-bold">Details</div>
+                        <Link to={`/food/details/${_id}`}><div className="btn btn-danger mb-2">Details</div></Link>
                     </div>
                 </div>
             </div>
