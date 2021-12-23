@@ -12,6 +12,7 @@ import About from './Pages/About/About/About';
 import Food from './Pages/Food/Food/Food';
 import AddRecipe from './Pages/AddRecipe/AddRecipe/AddRecipe';
 import Profile from './Pages/Profile/Profile';
+import UpdatePost from './Pages/Profile/UpdatePost';
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
             <Route path="/food" element={<Food />} />
             <Route path="/addRecipe" element={<AddRecipe />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/users/update/:id" element={<UpdatePost />} />
           </Routes>
         </BrowserRouter>
       </AuthProvider>

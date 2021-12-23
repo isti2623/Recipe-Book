@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const SinPost = (props) => {
     const { recipeName, cuisine, category, author, ingredients, method, image, _id } = props.post;
@@ -30,6 +31,7 @@ const SinPost = (props) => {
                         <h4 className='mt-3'><span className='text-danger fw-bold'>Age:</span> {cuisine}</h4>
                         <h6 className='mt-3'><span className='text-danger fw-bold'>Details:</span> {category}</h6>
                         <div className="btn btn-danger mb-2" onClick={() => handleDeleteBlood(_id)} >DELETE</div>
+                        <Link to={`/users/update/${_id}`}><div className="btn btn-danger mb-2">EDIT</div></Link>
 
                     </div>
                     <div className="col-md-4 mb-5 date-card">
