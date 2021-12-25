@@ -5,15 +5,19 @@ import SingleFood from '../SingleFood';
 
 const Food = () => {
     const [foods, setFoods] = useState([]);
-    const [searchText, setSearchText] = useState("");
+    const [searchText, setSearchText] = useState([]);
     useEffect(() => {
         fetch("http://localhost:5000/recipePostReq")
             .then(res => res.json())
-            .then(data => setFoods(data))
+            .then(data => {
+                setFoods(data);
+                setSearchText(data);
+            })
     }, [searchText])
     const handleSearchField = e => {
         const searchTextVaule = e.target.value;
-        setSearchText(searchTextVaule);
+        const matchedFoods = foods.filter(food => food.recipeName.toLowerCase().includes(searchTextVaule.toLowerCase()))
+        setSearchText(matchedFoods);
     }
     return (
         <div>
@@ -33,7 +37,7 @@ const Food = () => {
 
                     <div className="row row-cols-1 row-cols-md-3 g-4">
                         {
-                            foods.map(food => <SingleFood
+                            searchText.map(food => <SingleFood
                                 key={food._id}
                                 food={food}
                             >
