@@ -16,6 +16,11 @@ const AddRecipe = () => {
     const [method, setMethod] = useState('');
     const [image, setImage] = useState(null);
 
+    console.log(recipeName);
+    console.log(cuisine);
+    console.log(category);
+
+
     /* const initialInfo = { recipeName: '', cuisine: '', category: '', author: user.displayName, ingredients: '', method: '' }
     const [recipeReq, setRecipeReq] = useState(initialInfo);
 
@@ -41,6 +46,8 @@ const AddRecipe = () => {
         const formData = new FormData();
         // const recipePost = { ...recipeReq }
 
+
+
         formData.append('recipeName', recipeName);
         formData.append('cuisine', cuisine);
         formData.append('category', category);
@@ -62,6 +69,7 @@ const AddRecipe = () => {
             .catch(error => {
 
             });
+
 
 
 
