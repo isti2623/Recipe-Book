@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import useAuth from '../../../hooks/useAuth';
+import Favourites from './Favourites';
 
 const MyFavourite = () => {
+
 
     let deleteCount = 0;
     const { user } = useAuth();
@@ -53,10 +55,18 @@ const MyFavourite = () => {
                 <h5 className="text-warning">{user?.displayName}</h5>
                 <h4>Your favourite item: <span className="text-danger">{favourites.length}</span></h4>
             </div>
-            <div className="row row-cols-2 row-cols-md-4">
+            <div className="row row-cols-1 row-cols-md-3 g-4">
                 {
-                    favourites?.map(favourite =>
-                        <div key={favourite._id} className="col ">
+                    favourites?.map(favourite => <Favourites
+
+                        key={favourite._id}
+                        favourite={favourite}
+                        handleDeleteFavourites={handleDeleteFavourites}
+                    >
+                    </Favourites>)
+                }
+
+                {/* <div key={favourite._id} className="col ">
                             <div className="shadow p-3 text-center">
                                 <div>
                                     <img className="img-fluid" style={{ height: "5rem" }} src={favourite?.image} alt="" />
@@ -67,9 +77,9 @@ const MyFavourite = () => {
                                     <button onClick={() => handleDeleteFavourites(favourite._id)} className="btn btn-danger">Remove from favourite</button>
                                 </div>
                             </div>
-                        </div>
-                    )
-                }
+                        </div> */}
+
+
 
             </div>
         </div>

@@ -51,6 +51,7 @@ const Favourite = () => {
                         {
                             users?.recipeName && <form onSubmit={handleSubmit(onSubmit)}>
                                 <input defaultValue={users?.recipeName} readOnly hidden {...register("recipeName", { required: true })} />
+                                <input defaultValue={users?.category} readOnly hidden {...register("category", { required: true })} />
 
                                 <input defaultValue={user?.displayName} readOnly hidden {...register("userName")} />
                                 <input defaultValue={user?.email} readOnly hidden {...register("email", { required: true })} />
