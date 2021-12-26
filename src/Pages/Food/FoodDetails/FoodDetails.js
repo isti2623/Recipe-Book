@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Card } from 'react-bootstrap';
+
 import { useParams } from 'react-router-dom';
 import Navigation from '../../Shared/Navigation/Navigation';
 
@@ -12,7 +12,7 @@ const FoodDetails = () => {
         fetch(url)
             .then(res => res.json())
             .then(data => setUser(data));
-    }, []);
+    }, [id]);
     return (
         <div>
             <Navigation></Navigation>
