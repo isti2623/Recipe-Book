@@ -17,9 +17,12 @@ const SingleFood = (props) => {
                     <div className="card-body">
                         <h5 className="card-title">{recipeName}</h5>
                         {/*  <p className="card-text">{method.slice(0, 100)}</p> */}
-                        <FacebookShareButton url={shareUrl} quote={"title"} hashtag={"hashgd"}>
-                            <FacebookIcon size={40} />
-                        </FacebookShareButton>
+                        <div className='d-flex justify-content-between'>
+                            <FacebookShareButton url={shareUrl} quote={"title"} hashtag={"hashgd"}>
+                                <FacebookIcon size={40} />
+                            </FacebookShareButton>
+                            <button title='Add to favourite' className='btn btn-outline-danger '><i className="far fa-heart fs-3 p-1"></i></button>
+                        </div>
                         <p className="card-text">Category: {category}</p>
                     </div>
                     <div className="card-footer">
