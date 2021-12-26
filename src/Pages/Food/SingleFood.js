@@ -7,13 +7,13 @@ import {
 } from "react-share";
 
 const SingleFood = (props) => {
-    const { recipeName, cuisine, category, author, ingredients, method, image, _id } = props.food;
+    const { recipeName, cuisine, category, author, ingredients, method, image, _id } = props?.food;
     const shareUrl = `https://localhost:3000/food/${_id}`;
     return (
         <div>
             <div className="col">
                 <div className="card h-100">
-                    <img src={`data:image/png;base64,${image}`} className="card-img-top" alt="..." />
+                    <img style={{ height: "25rem" }} src={`data:image/png;base64,${image}`} className="card-img-top" alt="..." />
                     <div className="card-body">
                         <h5 className="card-title">{recipeName}</h5>
                         {/*  <p className="card-text">{method.slice(0, 100)}</p> */}

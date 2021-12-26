@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { CardGroup, FormControl, InputGroup } from 'react-bootstrap';
+import { FormControl, InputGroup } from 'react-bootstrap';
 import Navigation from '../../Shared/Navigation/Navigation';
 import SingleFood from '../SingleFood';
 
 const Food = () => {
     const [foods, setFoods] = useState([]);
+
     const [searchText, setSearchText] = useState([]);
+
     useEffect(() => {
         fetch("http://localhost:5000/recipePostReq")
             .then(res => res.json())
@@ -13,7 +15,7 @@ const Food = () => {
                 setFoods(data);
                 setSearchText(data);
             })
-    }, [searchText])
+    }, [])
     const handleSearchField = e => {
         const searchTextVaule = e.target.value;
         const matchedFoods = foods.filter(food => food.recipeName.toLowerCase().includes(searchTextVaule.toLowerCase()))
