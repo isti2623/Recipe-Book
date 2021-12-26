@@ -14,6 +14,8 @@ import AddRecipe from './Pages/AddRecipe/AddRecipe/AddRecipe';
 import Profile from './Pages/Profile/Profile';
 import UpdatePost from './Pages/Profile/UpdatePost';
 import FoodDetails from './Pages/Food/FoodDetails/FoodDetails';
+import Favourite from './Pages/Home/Favourite/Favourite';
+import Favourites from './Pages/Home/Favourite/Favourites';
 
 
 function App() {
@@ -32,6 +34,8 @@ function App() {
             <Route path="/profile" element={<Profile />} />
             <Route path="/users/update/:id" element={<UpdatePost />} />
             <Route path="/food/details/:id" element={<FoodDetails />} />
+            <Route path="/food/favourite/:id" element={<Favourite />} />
+            <Route path="/MyFavourite" element={<Favourites />} />
           </Routes>
         </BrowserRouter>
       </AuthProvider>

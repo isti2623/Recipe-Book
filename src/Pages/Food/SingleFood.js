@@ -9,6 +9,7 @@ import {
 const SingleFood = (props) => {
     const { recipeName, cuisine, category, author, ingredients, method, image, _id } = props?.food;
     const shareUrl = `https://localhost:3000/food/${_id}`;
+
     return (
         <div>
             <div className="col">
@@ -21,7 +22,7 @@ const SingleFood = (props) => {
                             <FacebookShareButton url={shareUrl} quote={"title"} hashtag={"hashgd"}>
                                 <FacebookIcon size={40} />
                             </FacebookShareButton>
-                            <button title='Add to favourite' className='btn btn-outline-danger '><i className="far fa-heart fs-3 p-1"></i></button>
+                            <Link to={`/food/favourite/${_id}`}> <button title='Add to favourite' className='btn btn-outline-danger '><i className="far fa-heart fs-3 p-1"></i></button></Link>
                         </div>
                         <p className="card-text">Category: {category}</p>
                     </div>

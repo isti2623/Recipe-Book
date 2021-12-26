@@ -17,6 +17,7 @@ const Navigation = () => {
                             <Link to="/food" className='text-light fw-bold text-decoration-none mt-2 me-4'>FOOD</Link>
                             <Link to="/aboutUs" className='text-light fw-bold text-decoration-none mt-2 me-4'>ABOUT US</Link>
                             <Link to="/addRecipe" className='text-light fw-bold text-decoration-none mt-2 me-4'>ADD RECIPE</Link>
+                            <Link to="/myFavourite" className='text-light fw-bold text-decoration-none mt-2 me-4'>FAVOURITES</Link>
                             <Link to="/profile" className='text-light fw-bold text-decoration-none mt-2 me-4'>PROFILE</Link>
                             {
                                 user?.email ?
