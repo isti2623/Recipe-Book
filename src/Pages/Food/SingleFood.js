@@ -8,7 +8,7 @@ import {
 
 const SingleFood = (props) => {
     const { recipeName, cuisine, category, author, ingredients, method, image, _id } = props?.food;
-    const shareUrl = `https://localhost:3000/food/${_id}`;
+    const shareUrl = `https://sharif-rashed.netlify.app/project/1002`;
 
     return (
         <div>
@@ -19,7 +19,7 @@ const SingleFood = (props) => {
                         <h5 className="card-title">{recipeName}</h5>
                         {/*  <p className="card-text">{method.slice(0, 100)}</p> */}
                         <div className='d-flex justify-content-between'>
-                            <FacebookShareButton url={shareUrl} quote={"title"} hashtag={"hashgd"}>
+                            <FacebookShareButton url={shareUrl} quote={recipeName} hashtag={category}>
                                 <FacebookIcon size={40} />
                             </FacebookShareButton>
                             <Link to={`/food/favourite/${_id}`}> <button title='Add to favourite' className='btn btn-outline-danger '><i className="far fa-heart fs-3 p-1"></i></button></Link>
