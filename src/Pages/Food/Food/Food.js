@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FormControl, InputGroup } from 'react-bootstrap';
+import Footer from '../../Shared/Footer/Footer';
 import Navigation from '../../Shared/Navigation/Navigation';
 import SingleFood from '../SingleFood';
 
@@ -50,6 +51,7 @@ const Food = () => {
 
                 </div>
             </div>
+            <Footer></Footer>
         </div>
     );
 };

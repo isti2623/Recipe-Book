@@ -17,11 +17,14 @@ import FoodDetails from './Pages/Food/FoodDetails/FoodDetails';
 import Favourite from './Pages/Home/Favourite/Favourite';
 import FavouriteDetails from './Pages/Home/Favourite/FavouriteDetails';
 import SingleFavourite from './Pages/Home/Favourite/SingleFavourite';
+import NotFound from './Pages/NotFound/NotFound';
+
 
 
 function App() {
   return (
     <>
+
       <AuthProvider>
         <BrowserRouter>
           <Routes>
@@ -38,6 +41,7 @@ function App() {
             <Route path="/food/favourite/:id" element={<Favourite />} />
             <Route path="/favourite" element={<SingleFavourite />} />
             <Route path="/favourite/:id" element={<FavouriteDetails />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
       </AuthProvider>

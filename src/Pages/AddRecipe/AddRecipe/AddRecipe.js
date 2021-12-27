@@ -3,6 +3,7 @@ import { Alert, Button, Form } from 'react-bootstrap';
 
 import Navigation from '../../Shared/Navigation/Navigation';
 import add from '../../../images/add.jpg'
+import Footer from '../../Shared/Footer/Footer';
 
 const AddRecipe = () => {
 
@@ -187,7 +188,7 @@ const AddRecipe = () => {
                     }
                 </Form>
             </div>
-
+            <Footer></Footer>
         </>
 
     );

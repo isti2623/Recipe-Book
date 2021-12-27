@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
+import Footer from '../../Shared/Footer/Footer';
 import Navigation from '../../Shared/Navigation/Navigation';
 import MyFavourite from './MyFavourite';
 
@@ -73,6 +74,7 @@ const Favourite = () => {
                     <MyFavourite />
                 </div>
             </div>
+            <Footer></Footer>
         </div>
     );
 };

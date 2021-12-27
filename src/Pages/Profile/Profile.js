@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import useAuth from '../../hooks/useAuth';
+import Footer from '../Shared/Footer/Footer';
 import Navigation from '../Shared/Navigation/Navigation';
 import SinPost from './SinPost';
 
@@ -25,7 +26,7 @@ const Profile = () => {
                 >
                 </SinPost>)
             }
-
+            <Footer></Footer>
         </div>
     );
 };
