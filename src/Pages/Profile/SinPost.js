@@ -27,17 +27,15 @@ const SinPost = (props) => {
                     </div>
 
                     <div className="col-md-6">
-                        <h2 className='mt-3'><span className='text-danger fw-bold'>Name:</span> {recipeName}</h2>
-                        <h4 className='mt-3'><span className='text-danger fw-bold'>Age:</span> {cuisine}</h4>
-                        <h6 className='mt-3'><span className='text-danger fw-bold'>Details:</span> {category}</h6>
-                        <div className="btn btn-danger mb-2" onClick={() => handleDeleteBlood(_id)} >DELETE</div>
-                        <Link to={`/users/update/${_id}`}><div className="btn btn-danger mb-2">EDIT</div></Link>
+                        <h2 className='mt-3'><span className='text-danger '>RecipeName:</span> {recipeName}</h2>
+                        <h4 className='mt-3'><span className='text-danger'>Category:</span> {category}</h4>
+
+                        <div className="btn btn-danger mb-2 ms-3" onClick={() => handleDeleteBlood(_id)} >DELETE</div>
+                        <Link to={`/users/update/${_id}`}><div className="btn btn-danger ms-3 mb-2">EDIT</div></Link>
 
                     </div>
                     <div className="col-md-4 mb-5 date-card">
-                        <p className='date'>{author}</p>
-                        <h6 className=' fw-bold'><span className='text-danger fw-bold'>Blood Group:</span> {ingredients}</h6>
-                        <h6 className='mt-2 fw-bold'><span className='text-danger fw-bold'>Number Of Blood:</span> {method}</h6>
+                        <img className='w-25 mt-5' src={`data:image/png;base64,${image}`} alt="" />
 
 
                     </div>

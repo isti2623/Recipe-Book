@@ -19,7 +19,7 @@ const Favourites = ({ favourite, handleDeleteFavourites }) => {
                         <div className="text-center">
                             <Link to={`/favourite/${favourite._id}`}> <button title='Add to favourite' className='btn btn-outline-danger '>Details</button></Link>
 
-                            <button onClick={() => handleDeleteFavourites(favourite._id)} className="btn btn-danger">Remove from favourite</button>
+                            <button onClick={() => handleDeleteFavourites(favourite._id)} className="btn btn-danger ms-3">Remove from favourite</button>
                         </div>
                     </div>
                 </div>

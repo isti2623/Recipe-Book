@@ -144,6 +144,7 @@ const AddRecipe = () => {
                         <Form.Control
                             required
                             type="text"
+                            placeholder='author'
                             onChange={e => setAuthor(e.target.value)}
                         />
                     </Form.Group>
