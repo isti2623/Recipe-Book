@@ -18,6 +18,7 @@ import Favourite from './Pages/Home/Favourite/Favourite';
 import FavouriteDetails from './Pages/Home/Favourite/FavouriteDetails';
 import SingleFavourite from './Pages/Home/Favourite/SingleFavourite';
 import NotFound from './Pages/NotFound/NotFound';
+import PrivateRoute from './Pages/Login/PrivateRoute/PrivateRoute';
 
 
 
@@ -34,13 +35,13 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/aboutUs" element={<About />} />
             <Route path="/food" element={<Food />} />
-            <Route path="/addRecipe" element={<AddRecipe />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/users/update/:id" element={<UpdatePost />} />
-            <Route path="/food/details/:id" element={<FoodDetails />} />
-            <Route path="/food/favourite/:id" element={<Favourite />} />
-            <Route path="/favourite" element={<SingleFavourite />} />
-            <Route path="/favourite/:id" element={<FavouriteDetails />} />
+            <Route path="/addRecipe" element={<PrivateRoute><AddRecipe /></PrivateRoute>} />
+            <Route path="/profile" element={<PrivateRoute><Profile /></PrivateRoute>} />
+            <Route path="/users/update/:id" element={<PrivateRoute><UpdatePost /></PrivateRoute>} />
+            <Route path="/food/details/:id" element={<PrivateRoute><FoodDetails /></PrivateRoute>} />
+            <Route path="/food/favourite/:id" element={<PrivateRoute><Favourite /></PrivateRoute>} />
+            <Route path="/favourite" element={<PrivateRoute><SingleFavourite /></PrivateRoute>} />
+            <Route path="/favourite/:id" element={<PrivateRoute><FavouriteDetails /></PrivateRoute>} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

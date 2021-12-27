@@ -16,9 +16,14 @@ const Navigation = () => {
                             <Link to="/home" className='text-light fw-bold text-decoration-none mt-2 me-4'>HOME</Link>
                             <Link to="/food" className='text-light fw-bold text-decoration-none mt-2 me-4'>FOOD</Link>
                             {/* <Link to="/aboutUs" className='text-light fw-bold text-decoration-none mt-2 me-4'>ABOUT US</Link> */}
-                            <Link to="/addRecipe" className='text-light fw-bold text-decoration-none mt-2 me-4'>ADD RECIPE</Link>
-                            <Link to="/favourite" className='text-light fw-bold text-decoration-none mt-2 me-4'>FAVOURITES</Link>
-                            <Link to="/profile" className='text-light fw-bold text-decoration-none mt-2 me-4'>PROFILE</Link>
+                            {
+                                user?.email &&
+                                <div>
+                                    <Link to="/addRecipe" className='text-light fw-bold text-decoration-none mt-2 me-4'>ADD RECIPE</Link>
+                                    <Link to="/favourite" className='text-light fw-bold text-decoration-none mt-2 me-4'>FAVOURITES</Link>
+                                    <Link to="/profile" className='text-light fw-bold text-decoration-none mt-2 me-4'>PROFILE</Link>
+                                </div>
+                            }
                             {
                                 user?.email ?
                                     <Button className='me-2' onClick={logOut} variant="danger">Logout</Button>
