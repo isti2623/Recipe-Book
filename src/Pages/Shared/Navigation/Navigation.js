@@ -18,11 +18,11 @@ const Navigation = () => {
                             {/* <Link to="/aboutUs" className='text-light fw-bold text-decoration-none mt-2 me-4'>ABOUT US</Link> */}
                             {
                                 user?.email &&
-                                <div>
+                                <>
                                     <Link to="/addRecipe" className='text-light fw-bold text-decoration-none mt-2 me-4'>ADD RECIPE</Link>
                                     <Link to="/favourite" className='text-light fw-bold text-decoration-none mt-2 me-4'>FAVOURITES</Link>
                                     <Link to="/profile" className='text-light fw-bold text-decoration-none mt-2 me-4'>PROFILE</Link>
-                                </div>
+                                </>
                             }
                             {
                                 user?.email ?
