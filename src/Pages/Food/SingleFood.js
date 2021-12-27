@@ -8,7 +8,7 @@ import {
 
 const SingleFood = (props) => {
     const { recipeName, cuisine, category, author, ingredients, method, image, _id } = props?.food;
-    const shareUrl = `https://sharif-rashed.netlify.app/project/1002`;
+    const shareUrl = `https://recipe-book-51ad3.web.app/food/details/${_id}`;
 
     return (
         <div>
