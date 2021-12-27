@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Alert, Button, Form } from 'react-bootstrap';
 
 import Navigation from '../../Shared/Navigation/Navigation';
+import add from '../../../images/add.jpg'
 
 const AddRecipe = () => {
 
@@ -94,12 +95,10 @@ const AddRecipe = () => {
     }
 
     return (
-        <div>
+        <>
             <Navigation></Navigation>
+
             <div className="col-md-8 add-blood">
-
-
-
                 <Form onSubmit={handleSubmit} className='w-50 my-5 ms-5'>
                     <Form.Group className="mb-3">
                         <Form.Label className="text-danger fw-bold">Recipe Name</Form.Label>
@@ -187,9 +186,9 @@ const AddRecipe = () => {
                         </Alert>
                     }
                 </Form>
-
             </div>
-        </div>
+
+        </>
 
     );
 

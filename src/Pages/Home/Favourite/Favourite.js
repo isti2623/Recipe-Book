@@ -52,13 +52,17 @@ const Favourite = () => {
                             users?.recipeName && <form onSubmit={handleSubmit(onSubmit)}>
                                 <input defaultValue={users?.recipeName} readOnly hidden {...register("recipeName", { required: true })} />
                                 <input defaultValue={users?.category} readOnly hidden {...register("category", { required: true })} />
+                                <input defaultValue={users?.cuisine} readOnly hidden {...register("cuisine", { required: true })} />
+                                <input defaultValue={users?.author} readOnly hidden {...register("author", { required: true })} />
+                                <input defaultValue={users?.ingredients} readOnly hidden {...register("ingredients", { required: true })} />
+                                <input defaultValue={users?.method} readOnly hidden {...register("method", { required: true })} />
 
                                 <input defaultValue={user?.displayName} readOnly hidden {...register("userName")} />
                                 <input defaultValue={user?.email} readOnly hidden {...register("email", { required: true })} />
                                 {errors.email && <span className="text-warning">This field is required.</span>}
                                 <input defaultValue={`data:image/png;base64,${users?.image}`} hidden readOnly {...register("image", { required: true })} />
                                 {errors.image && <span className="text-warning">This field is required.</span>}
-                                <button type="submit" className='btn btn-dark'>Add to favourite</button>
+                                <button type="submit" className='btn btn-outline-danger'>Add to favourite</button>
 
                             </form>
                         }
