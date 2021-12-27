@@ -10,7 +10,7 @@ const MyFavourite = () => {
     const [favourites, setFavourites] = useState([]);
     const email = user?.email;
     useEffect(() => {
-        fetch(`http://localhost:5000/myFavourites/${email}`)
+        fetch(`https://glacial-beach-07491.herokuapp.com/myFavourites/${email}`)
             .then((res) => res.json())
             .then((data) => setFavourites(data));
     }, [email, deleteCount]);
@@ -19,7 +19,7 @@ const MyFavourite = () => {
     //Delete Part
     const [myFavourites, setMyFavourites] = useState([]);
     useEffect(() => {
-        fetch(`http://localhost:5000/favourites`)
+        fetch(`https://glacial-beach-07491.herokuapp.com/favourites`)
             .then(res => res.json())
             .then(data => {
                 setMyFavourites(data);
@@ -30,7 +30,7 @@ const MyFavourite = () => {
     const handleDeleteFavourites = id => {
         const proceed = window.confirm('Are you sure, you want to delete?');
         if (proceed) {
-            const url = `http://localhost:5000/myFavourites/${id}`
+            const url = `https://glacial-beach-07491.herokuapp.com/myFavourites/${id}`
             fetch(url, {
                 method: 'DELETE',
             })

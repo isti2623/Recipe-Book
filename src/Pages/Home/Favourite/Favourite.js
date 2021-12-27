@@ -13,7 +13,7 @@ const Favourite = () => {
     const { id } = useParams();
 
     useEffect(() => {
-        const url = `http://localhost:5000/users/${id}`;
+        const url = `https://glacial-beach-07491.herokuapp.com/users/${id}`;
         fetch(url)
             .then(res => res.json())
             .then(data => setUsers(data));
@@ -24,7 +24,7 @@ const Favourite = () => {
     const onSubmit = data => {
         // console.log(data);
 
-        axios.post(`http://localhost:5000/favourites`, data)
+        axios.post(`https://glacial-beach-07491.herokuapp.com/favourites`, data)
             .then(res => {
                 if (res.data.insertedId) {
                     alert('Fovourited Successfully');

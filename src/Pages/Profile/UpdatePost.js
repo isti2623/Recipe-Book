@@ -18,7 +18,7 @@ const UpdatePost = () => {
     const [image, setImage] = useState(null);
 
     useEffect(() => {
-        const url = `http://localhost:5000/users/${id}`;
+        const url = `https://glacial-beach-07491.herokuapp.com/users/${id}`;
         fetch(url)
             .then(res => res.json())
             .then(data => setUser(data));
@@ -41,7 +41,7 @@ const UpdatePost = () => {
         formData.append('method', method);
         formData.append('image', image);
         //formData.append('recipePost', recipePost);
-        fetch(`http://localhost:5000/recipePostReq/${id}`, {
+        fetch(`https://glacial-beach-07491.herokuapp.com/recipePostReq/${id}`, {
             method: 'PUT',
             body: formData
         })

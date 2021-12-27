@@ -6,7 +6,7 @@ const SinPost = (props) => {
     const { del, setDel } = props;
     /* const [postDel, setPostDel] = useState(); */
     const handleDeleteBlood = id => {
-        const url = `http://localhost:5000/recipePostReq/${id}`
+        const url = `https://glacial-beach-07491.herokuapp.com/recipePostReq/${id}`
         fetch(url, {
             method: 'DELETE',
         })

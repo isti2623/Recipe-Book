@@ -58,7 +58,7 @@ const AddRecipe = () => {
         formData.append('method', method);
         formData.append('image', image);
         //formData.append('recipePost', recipePost);
-        fetch('http://localhost:5000/recipePostReq', {
+        fetch('https://glacial-beach-07491.herokuapp.com/recipePostReq', {
             method: 'POST',
             body: formData
         })
@@ -78,7 +78,7 @@ const AddRecipe = () => {
         /*        const recipePost = { ...recipeReq }
                setRecipeReq(recipePost);
                //send to server
-               fetch("http://localhost:5000/recipePostReq", {
+               fetch("https://glacial-beach-07491.herokuapp.com/recipePostReq", {
                    method: 'POST',
                    headers: {
                        'content-type': 'application/json'

@@ -9,7 +9,7 @@ const Category = () => {
 
 
     useEffect(() => {
-        fetch("http://localhost:5000/recipePostReq")
+        fetch("https://glacial-beach-07491.herokuapp.com/recipePostReq")
             .then(res => res.json())
             .then(data => {
                 setFoods(data);
