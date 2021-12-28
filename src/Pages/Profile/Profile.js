@@ -9,7 +9,7 @@ const Profile = () => {
     const [posts, setPosts] = useState([]);
     const [del, setDel] = useState(0);
     useEffect(() => {
-        const url = `https://glacial-beach-07491.herokuapp.com/recipePostReq?email=${user.email}`
+        const url = `https://glacial-beach-07491.herokuapp.com/recipePostReqDashboard?email=${user.email}`
         fetch(url)
             .then(res => res.json())
             .then(data => setPosts(data))

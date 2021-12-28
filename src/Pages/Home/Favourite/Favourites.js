@@ -17,7 +17,7 @@ const Favourites = ({ favourite, handleDeleteFavourites }) => {
                             <h6 className="text-center">{favourite?.category}</h6>
                         </div>
                         <div className="text-center">
-                            <Link to={`/favourite/${favourite._id}`}> <button title='Add to favourite' className='btn btn-outline-danger '>Details</button></Link>
+                            <Link to={`/favourite/${favourite._id}`}> <button className='btn btn-outline-danger '>Details</button></Link>
 
                             <button onClick={() => handleDeleteFavourites(favourite._id)} className="btn btn-danger ms-3">Remove from favourite</button>
                         </div>

@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
 
 const SinPost = (props) => {
+    const { user } = useAuth();
     const { recipeName, cuisine, category, author, ingredients, method, image, _id } = props.post;
     const { del, setDel } = props;
     /* const [postDel, setPostDel] = useState(); */
@@ -29,6 +31,8 @@ const SinPost = (props) => {
                     <div className="col-md-6">
                         <h2 className='mt-3'><span className='text-danger '>RecipeName:</span> {recipeName}</h2>
                         <h4 className='mt-3'><span className='text-danger'>Category:</span> {category}</h4>
+                        <h4 className='mt-3'><span className='text-danger'>Author:</span> {author}</h4>
+                        <h4 className='mt-3'><span className='text-danger'>Email:</span> {user?.email}</h4>
 
                         <div className="btn btn-danger mb-2 ms-3" onClick={() => handleDeleteBlood(_id)} >DELETE</div>
                         <Link to={`/users/update/${_id}`}><div className="btn btn-danger ms-3 mb-2">EDIT</div></Link>

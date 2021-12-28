@@ -10,6 +10,7 @@ const useFirebase = () => {
     const [user, setUser] = useState({});
     const [isLoading, setIsLoading] = useState(true);
     const [authError, setAuthError] = useState('');
+    const [admin, setAdmin] = useState(false);
 
     const auth = getAuth();
 
@@ -21,21 +22,26 @@ const useFirebase = () => {
                 navigate(from, { replace: true });
                 const newUser = { email, displayName: name };
                 setUser(newUser);
+                //save database
+                saveUser(email, name, 'POST');
+                //send name to firebase after creation
                 updateProfile(auth.currentUser, {
-                    displayName: name
+                    displayName: name,
                 }).then(() => {
-
+                    // Profile updated!
+                    // ...
                 }).catch((error) => {
-
+                    // An error occurred
+                    // ...
                 });
-
                 setAuthError('');
 
             })
             .catch((error) => {
                 setAuthError(error.message);
+                // ..
             })
-            .finally(() => setIsLoading(false));;
+            .finally(() => setIsLoading(false));
     }
 
     const logOut = () => {
@@ -72,7 +78,25 @@ const useFirebase = () => {
             setIsLoading(false);
         });
         return () => unsubscribe
-    }, [])
+    }, [auth])
+
+    useEffect(() => {
+        fetch(`https://glacial-beach-07491.herokuapp.com/users/${user.email}`)
+            .then(res => res.json())
+            .then(data => setAdmin(data.admin))
+    }, [user.email])
+
+    const saveUser = (email, displayName, method) => {
+        const user = { email, displayName };
+        fetch('https://glacial-beach-07491.herokuapp.com/userInfo', {
+            method: method,
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then()
+    }
 
     return {
         user,
@@ -81,6 +105,7 @@ const useFirebase = () => {
         loginUser,
         isLoading,
         authError,
+        admin
     }
 }
 

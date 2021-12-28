@@ -4,12 +4,15 @@ import { Alert, Button, Form } from 'react-bootstrap';
 import Navigation from '../../Shared/Navigation/Navigation';
 import add from '../../../images/add.jpg'
 import Footer from '../../Shared/Footer/Footer';
+import useAuth from '../../../hooks/useAuth';
 
 const AddRecipe = () => {
 
-
+    const { user } = useAuth();
     const [recipeSuccess, setRecipeSuccess] = useState(false);
 
+    const [name, setName] = useState(user?.displayName);
+    const [email, setEmail] = useState(user?.email);
     const [recipeName, setRecipeName] = useState('');
     const [cuisine, setCuisine] = useState('');
     const [category, setCategory] = useState('');
@@ -49,7 +52,8 @@ const AddRecipe = () => {
         // const recipePost = { ...recipeReq }
 
 
-
+        formData.append('name', name);
+        formData.append('email', email);
         formData.append('recipeName', recipeName);
         formData.append('cuisine', cuisine);
         formData.append('category', category);
@@ -57,6 +61,7 @@ const AddRecipe = () => {
         formData.append('ingredients', ingredients);
         formData.append('method', method);
         formData.append('image', image);
+
         //formData.append('recipePost', recipePost);
         fetch('https://glacial-beach-07491.herokuapp.com/recipePostReq', {
             method: 'POST',
@@ -101,6 +106,29 @@ const AddRecipe = () => {
 
             <div className="col-md-8 add-blood">
                 <Form onSubmit={handleSubmit} className='w-50 my-5 ms-5'>
+
+                    <Form.Group className="mb-3">
+                        <Form.Label className="text-danger fw-bold">Name</Form.Label>
+                        <Form.Control
+                            required
+                            type="text"
+                            disabled
+                            onChange={e => setName(e.target.value)}
+                            defaultValue={user.displayName}
+                        />
+                    </Form.Group>
+
+                    <Form.Group className="mb-3">
+                        <Form.Label className="text-danger fw-bold">Email</Form.Label>
+                        <Form.Control
+                            required
+                            disabled
+                            type="text"
+                            onChange={e => setEmail(e.target.value)}
+                            defaultValue={user?.email}
+                        />
+                    </Form.Group>
+
                     <Form.Group className="mb-3">
                         <Form.Label className="text-danger fw-bold">Recipe Name</Form.Label>
                         <Form.Control
